@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSecOps CI/CD Journey | Awash Maskey</title>
+  <meta name="description" content="Hands-on DevSecOps portfolio project covering Jenkins, Docker, Trivy, SonarQube, secure deployment, and real-world troubleshooting.">
+  <meta name="keywords" content="DevSecOps, Jenkins, Docker, Trivy, SonarQube, CI/CD, Linux, Portfolio, Awash Maskey">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .project-hero {
+      padding: 60px 0 30px;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      height: 100%;
+    }
+    .project-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .project-meta li {
+      margin-bottom: 10px;
+    }
+    .project-section {
+      padding: 20px 0;
+    }
+    .project-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .project-section h4 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .project-image {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .tag-list span {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f5f7;
+      font-size: 0.9rem;
+    }
+    .back-link {
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <h1 class="logo m-0"><a href="index.html">Awash Maskey</a></h1>
+      <a href="index.html#portfolio" class="btn btn-outline-primary btn-sm">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="project-hero">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <h1 class="mb-3">DevSecOps CI/CD Journey</h1>
+            <p class="lead mb-4">
+              A hands-on project focused on building a secure CI/CD workflow using Jenkins, Docker,
+              container security scanning, code quality checks, and practical troubleshooting on a self-managed VPS.
+            </p>
+            <div class="tag-list">
+              <span>Jenkins</span>
+              <span>Docker</span>
+              <span>Trivy</span>
+              <span>SonarQube</span>
+              <span>Linux</span>
+              <span>Cloudflare</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="project-card">
+              <h3>Project Snapshot</h3>
+              <ul class="list-unstyled project-meta mb-0">
+                <li><strong>Role:</strong> DevOps / System Administrator</li>
+                <li><strong>Type:</strong> Personal hands-on project</li>
+                <li><strong>Focus:</strong> CI/CD, Security, Deployment</li>
+                <li><strong>Environment:</strong> VPS, Docker, Nginx</li>
+                <li><strong>Status:</strong> Active learning project</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <img src="assets/img/portfolio/devsecops project .png" alt="DevSecOps Project" class="img-fluid project-image">
+          </div>
+          <div class="col-lg-4">
+            <div class="project-card">
+              <h3>What this project demonstrates</h3>
+              <ul class="mb-0">
+                <li>Practical Jenkins deployment and pipeline setup</li>
+                <li>Containerized application delivery using Docker</li>
+                <li>Security-first thinking during deployment</li>
+                <li>Debugging real issues in Linux and containers</li>
+                <li>Documenting the learning journey clearly</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          This project was built to help me transition from systems and infrastructure work into DevOps and DevSecOps.
+          The goal was not only to deploy a portfolio site, but to learn how modern delivery pipelines are built,
+          secured, debugged, and improved step by step.
+        </p>
+        <p>
+          I used a self-managed VPS and domain to create a real environment where I could practice deployment,
+          reverse proxying, SSL handling, Docker workflows, Jenkins automation, and security tooling in a practical way.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Challenge</h2>
+        <p>
+          The main challenge was moving from a manually managed static site to a more structured DevSecOps workflow.
+          That included setting up services correctly, solving networking and proxy issues, handling Docker behavior,
+          understanding CI/CD pipeline structure, and preparing the environment for future security scanning and monitoring.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>What I implemented</h2>
+
+        <h4>1. VPS and Web Delivery</h4>
+        <ul>
+          <li>Configured a Linux VPS environment for hosting and testing</li>
+          <li>Served the portfolio site through Docker and Nginx</li>
+          <li>Integrated domain routing and reverse proxying</li>
+        </ul>
+
+        <h4>2. CI/CD Foundation</h4>
+        <ul>
+          <li>Installed and configured Jenkins in Docker</li>
+          <li>Tested Docker access from Jenkins</li>
+          <li>Prepared the project structure for automated build and deployment</li>
+        </ul>
+
+        <h4>3. Security Direction</h4>
+        <ul>
+          <li>Prepared for container vulnerability scanning with Trivy</li>
+          <li>Planned code quality integration with SonarQube</li>
+          <li>Used secure reverse proxy and SSL/TLS routing practices</li>
+        </ul>
+
+        <h4>4. Troubleshooting and Learning</h4>
+        <ul>
+          <li>Resolved reverse proxy and bad gateway issues</li>
+          <li>Debugged Docker container lifecycle problems</li>
+          <li>Learned the difference between static delivery and framework-based deployment</li>
+          <li>Improved understanding of networking, SSL modes, and container access</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Tools Used</h2>
+        <div class="tag-list">
+          <span>Rocky Linux</span>
+          <span>Docker</span>
+          <span>Nginx</span>
+          <span>Jenkins</span>
+          <span>Cloudflare</span>
+          <span>Trivy</span>
+          <span>SonarQube</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Outcome</h2>
+        <p>
+          This project became the foundation of my transition into DevOps. It gave me hands-on experience with
+          containerized deployment, Jenkins setup, reverse proxy configuration, DNS and SSL troubleshooting,
+          and the practical mindset required to build secure delivery workflows in stages.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section pb-5">
+      <div class="container">
+        <a class="back-link" href="index.html#portfolio">← Return to portfolio</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

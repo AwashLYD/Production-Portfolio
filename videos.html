@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Videos | Awash Maskey</title>
+  <meta name="description" content="Project videos, walkthroughs, troubleshooting demos, and technical lab media by Awash Maskey.">
+  <meta name="keywords" content="Project Videos, DevOps, Linux, Telecom, Infrastructure, Troubleshooting, Awash Maskey">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-soft: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .page-hero {
+      padding: 72px 0 40px;
+      background: linear-gradient(135deg, #0f172a 0%, #111827 55%, #1d4ed8 100%);
+      color: #fff;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .page-hero p {
+      max-width: 760px;
+      color: rgba(255,255,255,0.86);
+      font-size: 1.05rem;
+      margin-top: 14px;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-light {
+      background: var(--bg-soft);
+    }
+
+    .video-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .video-card video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .video-card-body {
+      padding: 20px;
+    }
+
+    .video-card-body h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .video-card-body p {
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Awash Maskey</a>
+        <div class="ms-auto">
+          <a href="index.html" class="btn btn-outline-primary btn-sm">← Back to Home</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Project Videos</h1>
+        <p>
+          A dedicated collection of technical walkthroughs, troubleshooting demos, telecom labs,
+          infrastructure work, and project media. Keeping them here makes the homepage faster,
+          cleaner, and more professional.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="row g-4">
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/codec.jpg">
+                <source src="assets/video/codec with sql.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Codec</div>
+                <div class="tag">SQL</div>
+                <h3>Codec with SQL</h3>
+                <p>Short demo showing codec-related work with SQL-backed configuration or analysis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/bcp.png">
+                <source src="assets/video/Dell Rack Depoyment.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Data Center</div>
+                <div class="tag">Rack Work</div>
+                <h3>Backup Recovery Rack Management Workout</h3>
+                <p>Hands-on infrastructure and rack deployment work related to backup and recovery environments.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/gslb.png">
+                <source src="assets/video/great.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Networking</div>
+                <div class="tag">GSLB</div>
+                <h3>Global Server Load Balancing</h3>
+                <p>Video content related to load balancing concepts and distributed service access.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/500-internal-server-error-wordpress.png">
+                <source src="assets/video/kbl003 - timing.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Troubleshooting</div>
+                <div class="tag">Web</div>
+                <h3>Troubleshooting Internal Server Error</h3>
+                <p>Practical debugging-oriented content focused on service error investigation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/fpg.png">
+                <source src="assets/video/lebnanteam.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Security</div>
+                <div class="tag">Deployment</div>
+                <h3>Fraud Prevention Gateway Rack Deployment</h3>
+                <p>Project media showing rack-level deployment and infrastructure work for a security-related platform.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/multihoming.png">
+                <source src="assets/video/configflip.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Telecom Lab</div>
+                <div class="tag">Python</div>
+                <h3>Python Multihoming with ConfigFlip Loopback System</h3>
+                <p>Media related to the multihoming/STP lab and automation-oriented validation work.</p>
+                <a href="multihoming-stp-lab-vsphere.html" class="btn btn-outline-primary btn-sm">Related Project</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/tracing.png">
+                <source src="assets/video/sippp.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Telecom</div>
+                <div class="tag">Wireshark</div>
+                <h3>PCAP Analyzing / Tracing SIP Call Flow</h3>
+                <p>Walkthrough content related to SIP flow analysis and telecom signalling investigation.</p>
+                <a href="case-00023545-svi-gmsc-csfb-analysis.html" class="btn btn-outline-primary btn-sm">Related Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/checklist_todo_clock_time_team.png">
+                <source src="assets/video/rpm update c6.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Linux</div>
+                <div class="tag">Legacy Systems</div>
+                <h3>Manual RPM Update on C6 Legacy System</h3>
+                <p>Linux maintenance work in a legacy environment, showing practical package management tasks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/resourceheadertelecom.png">
+                <source src="assets/video/surface.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Telecom</div>
+                <div class="tag">Resources</div>
+                <h3>Header Resource Invia</h3>
+                <p>Supplementary telecom-related project media.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/timervalue.png">
+                <source src="assets/video/refresh time.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Linux</div>
+                <div class="tag">Troubleshooting</div>
+                <h3>Systemd Timer Value Troubleshooting</h3>
+                <p>Companion media for the RHEL/systemd troubleshooting article.</p>
+                <a href="systemd-timer-troubleshooting-rhel7.html" class="btn btn-outline-primary btn-sm">Related Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/sctptelecom.jpg">
+                <source src="assets/video/resources tabbing  time.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">SCTP</div>
+                <div class="tag">Telecom</div>
+                <h3>SCTP Resource Tabbing</h3>
+                <p>Telecom lab media supporting low-level protocol and resource-focused investigation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-card">
+              <video controls preload="metadata" poster="assets/img/portfolio/teamwork.jpg">
+                <source src="assets/video/l2.mp4" type="video/mp4">
+              </video>
+              <div class="video-card-body">
+                <div class="tag">Operations</div>
+                <div class="tag">Teamwork</div>
+                <h3>Importance of Teamwork in a Data Center</h3>
+                <p>Video content reflecting collaboration and operational discipline in infrastructure environments.</p>
+                <a href="portfolio-teamwork.html" class="btn btn-outline-primary btn-sm">Related Article</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="mb-1">© 2026 Awash Maskey. All rights reserved.</p>
+      <small>Technical media and project walkthroughs</small>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

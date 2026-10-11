@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DevSecOps Journey – From Static Hosting to Production/title>
+  <meta name="description" content="My step-by-step DevSecOps journey: migrating a static portfolio site to a self-managed VPS with Docker, security hardening, monitoring, backups and more.">
+<!-- keep your existing <head> styles, meta tags, favicon etc. -->
+  <!-- if you use Bootstrap or other CSS frameworks, make sure the links are here -->
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+<header id="header" class="header">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="index.html">Awash Maskey</a></h1>
+    <a href="blog.html" class="btn btn-outline-primary btn-sm">← Back to Blog</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="portfolio-details" class="portfolio-details section">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Image & Meta -->
+    <div class="row gy-4 align-items-center">
+
+      <div class="col-lg-8">
+        <div class="col-lg-8">
+       <img src="assets/img/portfolio/devsecops project .png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+</div>
+</div>   
+    
+        <!-- your existing header / navigation -->
+
+<main>
+  <article>
+    <h1>DevSecOps Journey: From Static Hosting to Production</h1>
+    <p class="lead">How I moved my portfolio site from shared hosting to a fully self-managed, containerized, monitored and secured setup following DevSecOps principles.</p>
+
+    <p><strong>Start date:</strong> January 2026<br>
+       <strong>Current status:</strong> Production live, staging in progress, monitoring & backups running</p>
+
+    <hr>
+
+    <h2>1. Initial Situation & Goal</h2>
+    <ul>
+      <li>Site was hosted on shared hosting (Ionos)</li>
+      <li>Static HTML + Bootstrap template (iPortfolio)</li>
+      <li>Goal: move to own VPS, apply DevSecOps practices, document everything for learning & showcase</li>
+    </ul>
+
+    <h2>2. VPS Setup & Hardening</h2>
+    <p>Switched from Rocky Linux to Ubuntu 24.04 LTS for better tooling support.</p>
+
+    <pre><code># Create non-root user
+adduser awash
+usermod -aG sudo awash
+
+# Disable root login & password auth
+sudo nano /etc/ssh/sshd_config
+# → PermitRootLogin no
+# → PasswordAuthentication no
+sudo systemctl restart ssh
+
+# Firewall
+sudo ufw allow OpenSSH
+sudo ufw enable
+</code></pre>
+
+    <p><strong>Troubleshooting:</strong> Forgot to add user to sudo group → got locked out → had to use Ionos console to fix.</p>
+
+    <h2>3. Containerization</h2>
+    <p>Installed Docker & Compose, created custom Dockerfile, pushed image to Docker Hub.</p>
+
+    <pre><code>docker build -t awashawash/awash-portfolio:latest .
+docker push awashawash/awash-portfolio:latest
+</code></pre>
+
+    <p><strong>Challenge:</strong> Initial push failed due to large video file (>100 MB).<br>
+       <strong>Solution:</strong> Removed video from git history with <code>git filter-repo</code>, re-committed & pushed.</p>
+
+    <h2>4. Cloudflare Integration</h2>
+    <p>HTTPS, HSTS, proxy enabled. Staging subdomain on custom port (8081).</p>
+
+    <p><strong>Challenge:</strong> DNS for staging subdomain not resolving.<br>
+       <strong>Workaround (temporary):</strong> Testing via direct IP + port[](http://217.154.44.73:8081)</p>
+
+    <h2>5. Security Scanning</h2>
+    <p>Trivy on container image, SonarCloud for static analysis.</p>
+
+    <pre><code>trivy image awashawash/awash-portfolio:latest
+</code></pre>
+
+    <h2>6. Monitoring</h2>
+    <p>Prometheus + Grafana + Netdata.</p>
+
+    <p><strong>Challenge:</strong> Prometheus kept restarting.<br>
+       <strong>Solution:</strong> Fixed invalid YAML in prometheus.yml (removed misplaced <code>metrics_path</code>).</p>
+
+    <h2>7. Automated Backups</h2>
+    <pre><code># Daily at 3:00 AM
+0 3 * * * /home/awash/backup-site.sh >> /home/awash/backups/site/backup.log 2>&1
+</code></pre>
+
+    <h2>8. Current Status & Next Steps</h2>
+    <ul>
+      <li>Production live</li>
+      <li>Staging in progress (port 8081)</li>
+      <li>Monitoring & backups running</li>
+      <li>Planned: alerting, rate limiting, off-site backups, Dependabot</li>
+    </ul>
+
+    <h2>Lessons Learned</h2>
+    <ul>
+      <li>Always validate YAML syntax before restarting services</li>
+      <li>Separate production & staging early</li>
+      <li>Document everything – it helps when troubleshooting</li>
+      <li>Security first: harden server before exposing services</li>
+    </ul>
+
+    <p><em>Work in progress – check back for updates!</em></p>
+
+    <p><a href="https://github.com/AwashAwash/iportfolio-sites" target="_blank">→ View complete source code on GitHub</a></p>
+  </article>
+</main>
+</section>
+
+</main>
+
+<footer id="footer" class="footer">
+  <div class="container text-center">
+    <p>© <strong>Awash Maskey</strong>. All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

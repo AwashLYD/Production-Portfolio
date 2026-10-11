@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case 00023545 – CSFB Call Flow Failure Analysis (SVI_GMSC)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">My Website</a>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-lg-9">
+
+        <!-- Title -->
+        <h1 class="mb-3">
+      CSFB Call Flow Failure Analysis
+        </h1>
+        <p class="text-muted">
+          Product: SVI_GMSC | Author: Awash Maskey
+        </p>
+
+
+<div class="col-lg-8">
+  <img src="assets/img/portfolio/wireshark/anonymous call.png" class="img-fluid rounded shadow mb-3" alt="Anonymous Call">
+  <img src="assets/img/portfolio/wireshark/avps failer.png" class="img-fluid rounded shadow mb-3" alt="AVPs Failure">
+  <img src="assets/img/portfolio/wireshark/avpss.png" class="img-fluid rounded shadow mb-3" alt="AVPs Success">
+</div>
+   
+
+
+<!-- Overview -->
+
+
+        <hr>
+
+
+        
+        <h3>Case Overview</h3>
+        <p>
+          This case focuses on analyzing two different call scenarios observed on
+          <strong>SVI_GMSC</strong>. The first call is a <strong>4G CSFB (Circuit Switched Fall Back)</strong>
+          call that fails, while the second call is a <strong>3G call</strong> that completes successfully.
+        </p>
+
+        <p>
+          The objective was to determine whether the failure was related to signaling flow differences,
+          normalization issues, or version-specific behavior, without requiring a full GMSC model.
+          Instead, an <strong>SBC-based lab model</strong> was used for replication and analysis.
+        </p>
+
+        <!-- Call Scenarios -->
+        <h3>Call Scenarios Observed</h3>
+        <ul>
+          <li><strong>4G (CSFB)</strong> – Call failing</li>
+          <li><strong>3G</strong> – Call successful</li>
+        </ul>
+
+        <p>
+          Initial investigation indicated that SBC analysis was sufficient, and a full GMSC setup
+          was not required for root cause identification.
+        </p>
+
+        <!-- Versions -->
+        <h3>Software Versions Involved</h3>
+        <ul>
+          <li><code>svi-voip.v17_5_14.el7.x86_64</code> – Observed CSFB failure</li>
+          <li><code>svi-voip.v17_11_4.el7.x86_64</code> – Latest version for validation</li>
+        </ul>
+
+        <!-- Analysis -->
+        <h3>Trace and Log Analysis</h3>
+        <p>
+          The customer provided PCAP traces and logs for investigation. The primary trace used
+          for analysis was:
+        </p>
+
+        <ul>
+          <li>
+            <code>ukl6-gmsc-01_20230302_Onnetcall.pcap</code>
+          </li>
+        </ul>
+
+        <p>
+          Using Wireshark, SIP signaling flows were compared between the failing 4G CSFB call
+          and the successful 3G call to determine whether the flows were identical or deviated
+          at any stage.
+        </p>
+
+        <p>
+          Any non-identical flow behavior was documented and raised for engineering review.
+        </p>
+
+        <!-- Lab Replication -->
+        <h3>Lab Replication Strategy</h3>
+        <p>
+          To replicate the issue, an SBC lab model was built using the same software versions
+          tested by the customer. The model was created as a lightweight SBC reference setup,
+          focusing only on package installation rather than full GUI and licensing configuration.
+        </p>
+
+        <p>
+          SIP traffic replication was performed using <strong>SIPp</strong>, generated from
+          customer-provided PCAP files.
+        </p>
+
+        <!-- sniff2sipp -->
+        <h3>sniff2sipp and SIPp Testing</h3>
+        <p>
+          The following steps were executed:
+        </p>
+
+        <ol>
+          <li>Install <strong>sniff2sipp</strong> on the SBC lab model</li>
+          <li>Generate SIPp scenarios directly from the PCAP files</li>
+          <li>Execute the generated scenarios on a dedicated SIPp test machine</li>
+        </ol>
+
+        <p>
+          During the installation and usage of <strong>sniff2sipp</strong>, an error was encountered,
+          which required deeper inspection of the SIP signaling content.
+        </p>
+
+        <!-- Root Cause -->
+        <h3>Root Cause Identification</h3>
+        <p>
+          Detailed Wireshark analysis revealed that certain AVPs were marked as
+          <strong>unknown</strong>, resulting in SIP headers being interpreted as
+          <strong>anonymous calls</strong>.
+        </p>
+
+        <p>
+          This behavior caused critical values to be unresolved and displayed as
+          <code>00000</code>, ultimately impacting CSFB call processing.
+        </p>
+
+        <!-- Resolution -->
+        <h3>Resolution and Fix</h3>
+        <p>
+          To address the issue, a lab environment was built to test normalization behavior.
+          The <strong>normalization regex values</strong> were modified to correctly resolve
+          the affected AVPs.
+        </p>
+
+        <p>
+          After applying the updated normalization rules:
+        </p>
+
+        <ul>
+          <li>Anonymous call resolution was corrected</li>
+          <li>AVP values were properly parsed</li>
+          <li>CSFB call flow completed successfully</li>
+        </ul>
+
+
+        <!-- Recommendations -->
+        <h3>Recommendations for Production</h3>
+        <ul>
+          <li>Apply the updated normalization regex values in production</li>
+          <li>Validate changes on <code>svi-voip.v17_11_4.el7.x86_64</code></li>
+          <li>Perform SIPp regression testing before rollout</li>
+          <li>Engage Engineering for review and sign-off</li>
+        </ul>
+
+        <!-- Conclusion -->
+        <h3>Conclusion</h3>
+        <p>
+          This case demonstrates the importance of detailed SIP trace analysis, lab replication,
+          and normalization validation when troubleshooting CSFB call flow failures.
+          Using an SBC-based model with sniff2sipp and SIPp proved effective in identifying
+          and resolving the issue before production deployment.
+        </p>
+
+      
+
+        <!-- Back -->
+        <a href="../index.html" class="btn btn-secondary mt-4">
+          ← Back to Home
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

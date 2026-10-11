@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCTP Multihoming STP Lab | Awash Maskey</title>
+  <meta name="description" content="Hands-on SCTP multihoming lab built on VMware vSphere to validate STP redundancy, heartbeat monitoring, failover behavior, and telecom network resilience.">
+  <meta name="keywords" content="SCTP, Multihoming, STP, SIGTRAN, VMware vSphere, Telecom Lab, Linux Networking, Awash Maskey">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .page-hero {
+      padding: 60px 0 30px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      height: 100%;
+    }
+    .info-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .meta-list li {
+      margin-bottom: 10px;
+    }
+    .content-section {
+      padding: 20px 0;
+    }
+    .content-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .content-section h4 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .page-image {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+    .tag-list span {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f5f7;
+      font-size: 0.9rem;
+    }
+    .back-link {
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .lab-grid img {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <h1 class="logo m-0"><a href="index.html">Awash Maskey</a></h1>
+      <a href="index.html#portfolio" class="btn btn-outline-primary btn-sm">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <h1 class="mb-3">SCTP Multihoming STP Lab</h1>
+            <p class="lead mb-4">
+              A hands-on telecom networking lab built on VMware vSphere to demonstrate SCTP multihoming,
+              heartbeat monitoring, path failover, and resilient STP communication across isolated networks.
+            </p>
+            <div class="tag-list">
+              <span>SCTP</span>
+              <span>SIGTRAN</span>
+              <span>STP</span>
+              <span>VMware vSphere</span>
+              <span>Linux Networking</span>
+              <span>Failover Testing</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="info-card">
+              <h3>Lab Snapshot</h3>
+              <ul class="list-unstyled meta-list mb-0">
+                <li><strong>Topic:</strong> SCTP multihoming</li>
+                <li><strong>Use case:</strong> STP redundancy</li>
+                <li><strong>Platform:</strong> VMware vSphere</li>
+                <li><strong>Focus:</strong> Resilience and path failover</li>
+                <li><strong>Type:</strong> Technical lab project</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="lab-grid">
+              <img src="assets/img/portfolio/multihoming/active link.png" alt="Active link view" class="img-fluid page-image">
+              <img src="assets/img/portfolio/multihoming/arp.png" alt="ARP analysis" class="img-fluid page-image">
+              <img src="assets/img/portfolio/multihoming/beats.png" alt="Heartbeat monitoring" class="img-fluid page-image">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-card">
+              <h3>What this project demonstrates</h3>
+              <ul class="mb-0">
+                <li>Understanding of SCTP multihoming behavior</li>
+                <li>Lab-based failover and recovery validation</li>
+                <li>Hands-on routing and interface planning</li>
+                <li>Telecom resilience thinking</li>
+                <li>Practical protocol and network testing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          This lab was designed to demonstrate how SCTP multihoming can be used to improve reliability
+          in telecom signalling environments. The goal was to validate how an STP setup behaves when
+          multiple network paths are available and how service continuity is maintained when the primary path fails.
+        </p>
+        <p>
+          The project focused on creating a controlled environment where heartbeat behavior, routing decisions,
+          and failover events could be tested and understood clearly, without depending on interface bonding
+          or unnecessary complexity.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Lab design</h2>
+
+        <h4>Environment</h4>
+        <ul>
+          <li>Built on VMware vSphere</li>
+          <li>Two STP nodes configured with dual network interfaces</li>
+          <li>Separate Layer-3 networks used to model primary and secondary SCTP paths</li>
+        </ul>
+
+        <h4>Primary goal</h4>
+        <ul>
+          <li>Validate heartbeat monitoring across multiple SCTP paths</li>
+          <li>Observe failover from primary to secondary interface</li>
+          <li>Confirm continuity of signalling behavior during path disruption</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>What I worked on</h2>
+
+        <h4>Network planning</h4>
+        <ul>
+          <li>Planned isolated network paths for multihomed communication</li>
+          <li>Defined interface roles for primary and backup path handling</li>
+          <li>Reviewed routing behavior to avoid incorrect path assumptions</li>
+        </ul>
+
+        <h4>Configuration and validation</h4>
+        <ul>
+          <li>Configured the lab environment for SCTP path awareness</li>
+          <li>Observed heartbeat behavior and active path selection</li>
+          <li>Tested failover response under controlled disruption scenarios</li>
+        </ul>
+
+        <h4>Troubleshooting and analysis</h4>
+        <ul>
+          <li>Inspected route behavior and interface states during testing</li>
+          <li>Compared expected vs observed failover behavior</li>
+          <li>Used lab results to better understand resilience at the transport layer</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Technical areas involved</h2>
+        <div class="tag-list">
+          <span>SCTP</span>
+          <span>SIGTRAN</span>
+          <span>STP</span>
+          <span>VMware</span>
+          <span>Linux Networking</span>
+          <span>ARP</span>
+          <span>Routing</span>
+          <span>Heartbeat Monitoring</span>
+          <span>Redundancy</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Why this lab matters</h2>
+        <p>
+          This project shows my ability to move beyond theory and validate telecom networking behavior in a practical lab.
+          It reflects a strong interest in resilience, service continuity, and understanding how protocol-level behavior
+          supports real-world infrastructure reliability.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Outcome and learning</h2>
+        <p>
+          The lab improved my understanding of SCTP multihoming, failover mechanics, and route-aware system design.
+          It also strengthened my ability to build small focused technical labs to explore production-relevant behavior
+          in a safe and repeatable way.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section pb-5">
+      <div class="container">
+        <a class="back-link" href="index.html#portfolio">← Return to portfolio</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

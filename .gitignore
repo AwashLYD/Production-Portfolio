@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+assets/video/great2.mp4

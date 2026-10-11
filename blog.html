@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles & Technical Notes | Awash Maskey</title>
+  <meta name="description" content="Technical articles, troubleshooting notes, and engineering write-ups by Awash Maskey covering Linux, infrastructure, telecom, and DevSecOps learning.">
+  <meta name="keywords" content="Linux, DevOps, Telecom, Troubleshooting, Articles, Blog, Awash Maskey">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .blog-hero {
+      padding: 60px 0 30px;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      height: 100%;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .blog-card-body {
+      padding: 24px;
+    }
+    .blog-card-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+    .blog-card-body p {
+      color: #555;
+      margin-bottom: 16px;
+    }
+    .blog-tag {
+      display: inline-block;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f3f5f7;
+      font-size: 0.85rem;
+    }
+    .section-title h2 {
+      margin-bottom: 10px;
+    }
+    .section-title p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <h1 class="logo m-0"><a href="index.html">Awash Maskey</a></h1>
+      <a href="index.html" class="btn btn-outline-primary btn-sm">← Back to Home</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="blog-hero">
+      <div class="container text-center">
+        <div class="section-title">
+          <h2>Articles & Technical Notes</h2>
+          <p>
+            A collection of technical write-ups, troubleshooting cases, and practical learning notes
+            covering Linux systems, telecom platforms, infrastructure operations, and DevSecOps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pb-5">
+      <div class="container">
+        <div class="row g-4">
+
+          <div class="col-lg-6">
+            <div class="blog-card">
+              <img src="assets/img/portfolio/timervalue/default 1.png" alt="RHEL troubleshooting article">
+              <div class="blog-card-body">
+                <div class="mb-2">
+                  <span class="blog-tag">Linux</span>
+                  <span class="blog-tag">RHEL 7</span>
+                  <span class="blog-tag">Troubleshooting</span>
+                </div>
+                <h3>RHEL 7 Troubleshooting Case Study</h3>
+                <p>
+                  A practical technical article covering service instability, systemd timer behavior,
+                  Apache, MariaDB, SSH issues, and root-cause thinking in a Red Hat environment.
+                </p>
+                <a href="systemd-timer-troubleshooting-rhel7.html" class="btn btn-primary btn-sm">Read Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="blog-card">
+              <img src="assets/img/portfolio/app-2.jpg" alt="Live data center article">
+              <div class="blog-card-body">
+                <div class="mb-2">
+                  <span class="blog-tag">Data Center</span>
+                  <span class="blog-tag">Operations</span>
+                  <span class="blog-tag">Field Work</span>
+                </div>
+                <h3>Behind the Racks: A Real Moment from Inside a Live Data Center</h3>
+                <p>
+                  A short article reflecting on the physical reality of production data center work,
+                  including cabling discipline, precision, uptime awareness, and operational care.
+                </p>
+                <a href="portfolio-details-drlive.html" class="btn btn-primary btn-sm">Read Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="blog-card">
+              <img src="assets/img/portfolio/IMG_1864.jpg" alt="Teamwork article">
+              <div class="blog-card-body">
+                <div class="mb-2">
+                  <span class="blog-tag">Teamwork</span>
+                  <span class="blog-tag">Operations</span>
+                  <span class="blog-tag">Data Center</span>
+                </div>
+                <h3>Importance of Teamwork in a Data Center Environment</h3>
+                <p>
+                  A practical perspective on why collaboration matters in infrastructure environments
+                  where uptime, incident response, and operational discipline are shared responsibilities.
+                </p>
+                <a href="portfolio-teamwork.html" class="btn btn-primary btn-sm">Read Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="blog-card">
+              <img src="assets/img/portfolio/wireshark/anonymous call.png" alt="CSFB analysis article">
+              <div class="blog-card-body">
+                <div class="mb-2">
+                  <span class="blog-tag">Telecom</span>
+                  <span class="blog-tag">Wireshark</span>
+                  <span class="blog-tag">Case Analysis</span>
+                </div>
+                <h3>CSFB Call Flow Failure Analysis</h3>
+                <p>
+                  A technical case write-up focused on signaling flow comparison, SBC lab replication,
+                  and trace-based investigation of a CSFB call flow issue.
+                </p>
+                <a href="case-00023545-svi-gmsc-csfb-analysis.html" class="btn btn-primary btn-sm">Read Article</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

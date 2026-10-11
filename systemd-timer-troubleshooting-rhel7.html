@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RHEL 7 Troubleshooting Case Study | Awash Maskey</title>
+  <meta name="description" content="Technical troubleshooting case study covering systemd timer behavior, Apache HTTPD, MariaDB, SSH issues, and service stability in Red Hat Enterprise Linux 7.">
+  <meta name="keywords" content="RHEL 7, systemd, Apache, MariaDB, SSH, Linux troubleshooting, Awash Maskey">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .page-hero {
+      padding: 60px 0 30px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      height: 100%;
+    }
+    .info-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .meta-list li {
+      margin-bottom: 10px;
+    }
+    .content-section {
+      padding: 20px 0;
+    }
+    .content-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .content-section h4 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .page-image {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+    .tag-list span {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f5f7;
+      font-size: 0.9rem;
+    }
+    .back-link {
+      text-decoration: none;
+      font-weight: 500;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <h1 class="logo m-0"><a href="index.html">Awash Maskey</a></h1>
+      <a href="blog.html" class="btn btn-outline-primary btn-sm">← Back to Articles</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <h1 class="mb-3">RHEL 7 Troubleshooting Case Study</h1>
+            <p class="lead mb-4">
+              A practical troubleshooting case covering timer behavior, service failures,
+              database issues, SSH problems, and system stability in a Red Hat Enterprise Linux 7 environment.
+            </p>
+            <div class="tag-list">
+              <span>RHEL 7</span>
+              <span>systemd</span>
+              <span>Apache HTTPD</span>
+              <span>MariaDB</span>
+              <span>SSH</span>
+              <span>Linux Troubleshooting</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="info-card">
+              <h3>Article Snapshot</h3>
+              <ul class="list-unstyled meta-list mb-0">
+                <li><strong>Topic:</strong> Linux troubleshooting</li>
+                <li><strong>OS:</strong> Red Hat Enterprise Linux 7</li>
+                <li><strong>Focus:</strong> Stability and service recovery</li>
+                <li><strong>Type:</strong> Technical case study</li>
+                <li><strong>Category:</strong> Systems / Operations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <img src="assets/img/portfolio/timervalue/default 1.png" alt="System troubleshooting screenshot 1" class="img-fluid page-image">
+            <img src="assets/img/portfolio/timervalue/grubss.png" alt="System troubleshooting screenshot 2" class="img-fluid page-image">
+          </div>
+          <div class="col-lg-4">
+            <div class="info-card">
+              <h3>What this article shows</h3>
+              <ul class="mb-0">
+                <li>Structured issue analysis</li>
+                <li>Service-level debugging</li>
+                <li>Cross-layer troubleshooting</li>
+                <li>Operational root-cause thinking</li>
+                <li>Experience with production-style Linux issues</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          This case study documents a real troubleshooting scenario in a Red Hat Enterprise Linux 7 environment.
+          The investigation involved multiple interconnected issues affecting system behavior, service availability,
+          and platform stability.
+        </p>
+        <p>
+          Instead of treating the symptoms separately, the troubleshooting approach focused on identifying root causes,
+          understanding service dependencies, and restoring reliable system behavior step by step.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Problems observed</h2>
+
+        <h4>1. Timer and startup behavior</h4>
+        <ul>
+          <li>Unexpected timing-related behavior during system operation</li>
+          <li>Need to validate whether timer values and startup sequencing were contributing to delays</li>
+        </ul>
+
+        <h4>2. Apache HTTPD issues</h4>
+        <ul>
+          <li>Service start failures and unclean shutdown behavior</li>
+          <li>Backend connectivity and timeout-related symptoms</li>
+        </ul>
+
+        <h4>3. MariaDB / MySQL issues</h4>
+        <ul>
+          <li>Database engine startup inconsistencies</li>
+          <li>Errors related to configuration mismatch and connection stability</li>
+        </ul>
+
+        <h4>4. SSH and access issues</h4>
+        <ul>
+          <li>Host key verification problems</li>
+          <li>Missing SSL-related files and trust issues in the environment</li>
+        </ul>
+
+        <h4>5. General performance and usability</h4>
+        <ul>
+          <li>GUI loading delays</li>
+          <li>Operational impact from file and environment conditions</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>How I approached the troubleshooting</h2>
+
+        <h4>Service inspection</h4>
+        <ul>
+          <li>Reviewed service behavior across HTTPD, database, and related components</li>
+          <li>Compared startup patterns, error symptoms, and service dependencies</li>
+        </ul>
+
+        <h4>Configuration review</h4>
+        <ul>
+          <li>Checked for mismatches between runtime behavior and configured values</li>
+          <li>Focused on timer settings, backend references, and service expectations</li>
+        </ul>
+
+        <h4>System-level reasoning</h4>
+        <ul>
+          <li>Assessed whether individual failures were isolated or linked</li>
+          <li>Looked at the overall environment rather than debugging only one symptom at a time</li>
+        </ul>
+
+        <h4>Stability-first mindset</h4>
+        <ul>
+          <li>Prioritized recovery and consistent behavior before optimization</li>
+          <li>Used a structured process to reduce repeated failures and unclear assumptions</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Key technical areas involved</h2>
+        <div class="tag-list">
+          <span>systemd</span>
+          <span>Apache HTTPD</span>
+          <span>MariaDB</span>
+          <span>SSH</span>
+          <span>Linux Services</span>
+          <span>RHEL 7</span>
+          <span>Root Cause Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>Outcome and learning</h2>
+        <p>
+          This troubleshooting case strengthened my ability to work through complex Linux issues methodically,
+          especially where multiple services and system layers interact. It reinforced the importance of
+          service dependency awareness, configuration validation, and maintaining a clear debugging process
+          under operational pressure.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section pb-5">
+      <div class="container">
+        <a class="back-link" href="blog.html">← Return to articles</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
